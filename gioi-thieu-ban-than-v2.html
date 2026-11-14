@@ -1,0 +1,287 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Hồ sơ của tôi</title>
+
+  <style>
+    :root {
+      --nen: #e3f0fb;
+      --xanh-nhat: #cfe6f8;
+      --xanh-vua: #a9d3f1;
+      --xanh-dam: #3b7fb4;
+      --trang: #ffffff;
+      --chu: #26425a;
+    }
+
+    * { box-sizing: border-box; }
+
+    body {
+      margin: 0;
+      font-family: Verdana, Tahoma, sans-serif;
+      background-color: var(--nen);
+      color: var(--chu);
+      line-height: 1.6;
+    }
+
+    /* Bố cục 2 cột bằng CSS Grid: cột trái cố định, cột phải co giãn */
+    .trang {
+      display: grid;
+      grid-template-columns: 280px 1fr;
+      min-height: 100vh;
+    }
+
+    /* ---------- Cột trái: hồ sơ ---------- */
+    aside {
+      background-color: var(--xanh-vua);
+      padding: 32px 20px;
+      text-align: center;
+      position: sticky;
+      top: 0;
+      height: 100vh;
+    }
+    aside img {
+      width: 160px;
+      height: 160px;
+      object-fit: cover;
+      border-radius: 24px;
+      border: 5px solid var(--trang);
+    }
+    aside h1 {
+      font-size: 1.5rem;
+      margin: 16px 0 4px;
+      color: var(--xanh-dam);
+    }
+    aside p { margin: 0 0 18px; }
+
+    aside ul {
+      list-style: none;
+      padding: 0;
+      margin: 0 0 20px;
+    }
+    aside li a {
+      display: block;
+      padding: 9px;
+      margin-bottom: 6px;
+      border-radius: 10px;
+      background-color: var(--xanh-nhat);
+      color: var(--xanh-dam);
+      text-decoration: none;
+      font-weight: bold;
+    }
+    aside li a:hover { background-color: var(--trang); }
+
+    .nut-fb {
+      display: block;
+      padding: 10px;
+      border-radius: 10px;
+      background-color: var(--xanh-dam);
+      color: #fff;
+      text-decoration: none;
+      font-weight: bold;
+    }
+    .nut-fb:hover { background-color: #2f6894; }
+
+    /* ---------- Cột phải: nội dung ---------- */
+    main { padding: 32px 36px; }
+
+    main h2 {
+      color: var(--xanh-dam);
+      border-bottom: 3px solid var(--xanh-vua);
+      padding-bottom: 6px;
+      margin-top: 0;
+    }
+    section { margin-bottom: 40px; }
+
+    /* Lưới thẻ thông tin */
+    .luoi {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(190px, 1fr));
+      gap: 14px;
+    }
+    .the {
+      background-color: var(--trang);
+      border-radius: 14px;
+      padding: 14px 16px;
+      border-top: 6px solid var(--xanh-vua);
+    }
+    .the b { display: block; color: var(--xanh-dam); }
+
+    /* Thanh kỹ năng */
+    .ky-nang { margin-bottom: 12px; }
+    .thanh {
+      background-color: var(--trang);
+      border-radius: 20px;
+      height: 14px;
+      overflow: hidden;
+    }
+    .thanh div {
+      height: 100%;
+      background-color: var(--xanh-dam);
+      border-radius: 20px;
+    }
+
+    /* Mục tiêu: danh sách có thứ tự */
+    ol li { margin-bottom: 6px; }
+
+    /* Video */
+    .khung-video {
+      position: relative;
+      width: 100%;
+      padding-top: 56.25%;
+    }
+    .khung-video iframe {
+      position: absolute;
+      top: 0; left: 0;
+      width: 100%;
+      height: 100%;
+      border: 0;
+      border-radius: 14px;
+    }
+
+    /* Biểu mẫu lời nhắn */
+    form {
+      background-color: var(--trang);
+      border-radius: 14px;
+      padding: 20px;
+    }
+    label { display: block; font-weight: bold; margin-bottom: 4px; }
+    input[type="text"], textarea, select {
+      width: 100%;
+      padding: 9px;
+      margin-bottom: 14px;
+      border: 2px solid var(--xanh-vua);
+      border-radius: 8px;
+      font-family: inherit;
+    }
+    input:focus, textarea:focus, select:focus {
+      outline: none;
+      border-color: var(--xanh-dam);
+    }
+    button {
+      background-color: var(--xanh-dam);
+      color: #fff;
+      border: 0;
+      padding: 10px 24px;
+      border-radius: 8px;
+      font-size: 1rem;
+      cursor: pointer;
+    }
+    button:hover { background-color: #2f6894; }
+
+    footer {
+      text-align: center;
+      padding: 14px;
+      background-color: var(--xanh-vua);
+    }
+
+    /* Màn hình nhỏ: chuyển về 1 cột */
+    @media (max-width: 760px) {
+      .trang { grid-template-columns: 1fr; }
+      aside { position: static; height: auto; }
+      main { padding: 24px 16px; }
+    }
+  </style>
+</head>
+
+<body>
+  <div class="trang">
+
+    <!-- Cột trái: ảnh, tên, menu, Facebook -->
+    <aside>
+      <img src="https://ibb.co/60LR0kRK" alt="Ảnh của tôi">
+      <h1>Nguyễn Văn A</h1>
+      <p>Học sinh lớp 12A1</p>
+
+      <ul>
+        <li><a href="#gioi-thieu">Giới thiệu</a></li>
+        <li><a href="#ky-nang">Kỹ năng</a></li>
+        <li><a href="#muc-tieu">Mục tiêu</a></li>
+        <li><a href="#video">Video</a></li>
+        <li><a href="#loi-nhan">Lời nhắn</a></li>
+      </ul>
+
+      <a class="nut-fb"
+         href="https://www.facebook.com/share/1FBNNzqsVr/?mibextid=wwXIfr"
+         target="_blank">Facebook của mình</a>
+    </aside>
+
+    <!-- Cột phải: nội dung -->
+    <main>
+
+      <section id="gioi-thieu">
+        <h2>Giới thiệu</h2>
+        <div class="luoi">
+          <div class="the"><b>Họ và tên</b>Nguyễn Văn A</div>
+          <div class="the"><b>Ngày sinh</b>01/01/2008</div>
+          <div class="the"><b>Trường</b>THPT ........</div>
+          <div class="the"><b>Môn yêu thích</b>Tin học</div>
+        </div>
+        <p>
+          Xin chào, mình là học sinh lớp 12. Mình thích khám phá công nghệ
+          và đang học cách tạo trang web bằng HTML và CSS.
+        </p>
+      </section>
+
+      <section id="ky-nang">
+        <h2>Kỹ năng</h2>
+        <div class="ky-nang">
+          Soạn thảo văn bản
+          <div class="thanh"><div style="width: 85%"></div></div>
+        </div>
+        <div class="ky-nang">
+          HTML và CSS
+          <div class="thanh"><div style="width: 70%"></div></div>
+        </div>
+        <div class="ky-nang">
+          Làm việc nhóm
+          <div class="thanh"><div style="width: 90%"></div></div>
+        </div>
+      </section>
+
+      <section id="muc-tieu">
+        <h2>Mục tiêu</h2>
+        <ol>
+          <li>Hoàn thành tốt chương trình lớp 12.</li>
+          <li>Đạt kết quả cao trong kỳ thi tốt nghiệp.</li>
+          <li>Theo học ngành Công nghệ thông tin.</li>
+        </ol>
+      </section>
+
+      <section id="video">
+        <h2>Video yêu thích</h2>
+        <div class="khung-video">
+          <iframe src="https://www.youtube.com/embed/Pafx-AAYA_w"
+                  title="Video YouTube"
+                  allowfullscreen></iframe>
+        </div>
+      </section>
+
+      <section id="loi-nhan">
+        <h2>Gửi lời nhắn</h2>
+        <form>
+          <label for="ten">Tên của bạn</label>
+          <input type="text" id="ten" name="ten" placeholder="Nhập tên">
+
+          <label for="quan-he">Bạn là</label>
+          <select id="quan-he" name="quan-he">
+            <option>Bạn bè</option>
+            <option>Thầy cô</option>
+            <option>Người thân</option>
+          </select>
+
+          <label for="noi-dung">Lời nhắn</label>
+          <textarea id="noi-dung" name="noi-dung" rows="4"
+                    placeholder="Viết lời nhắn cho mình nhé"></textarea>
+
+          <button type="button" onclick="alert('Cảm ơn bạn đã gửi lời nhắn!')">Gửi lời nhắn</button>
+        </form>
+      </section>
+
+    </main>
+  </div>
+
+  <footer>&copy; 2026 - Hồ sơ cá nhân</footer>
+</body>
+</html>
